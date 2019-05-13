@@ -1,5 +1,6 @@
 import React from 'react';
-import { postTodo } from '../actions'
+import { connect } from 'react-redux';
+import { addTodo } from '../actions'
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class TodoForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.addTodo(this.state.description)
     this.setState({
       description: ""
     })
@@ -33,5 +35,14 @@ class TodoForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
 
-export default TodoForm;
+export default connect(
+  mapStateToProps,
+  { addTodo } // same as addTodo: addTodo
+)(TodoForm);
+

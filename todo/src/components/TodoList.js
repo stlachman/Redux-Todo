@@ -15,5 +15,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-// export default TodoList;
 export default connect(mapStateToProps)(TodoList);
