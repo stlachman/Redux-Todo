@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 const TodoList = props => {
   return (
     <ul>
-      {props.items.map(item => <li key={item.id}>{item.text}</li>)}
+      {props.todos.map((item, index) => <li key={index}>{item.value}</li>)}
     </ul>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items,
+    todos: state.todos,
   };
 };
 

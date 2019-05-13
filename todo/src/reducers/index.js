@@ -1,24 +1,24 @@
 const initialState = {
-	items: [
+	todos: [
 		{
-			id: 1528817077286,
-			text: 'Learn Redux',
+      id: 1528817084358,
+			value: 'Learn Redux',
 			completed: false
 		},
 		{
-			id: 1528817084358,
-			text: 'Go to movies',
+      id: 1528817077286,
+			value: 'Go to movies',
 			completed: false
 		}
-  ],
-  item: ''
+  ]
 };
 
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'ADD_TODO':
 			return {
-				...state
+        ...state, 
+      
 			};
 		default:
 			return state;
