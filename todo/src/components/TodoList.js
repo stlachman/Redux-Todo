@@ -18,7 +18,7 @@ const Title = styled.h1`
 const List = styled.ul`
 	padding-left: 0;
 	list-style: none;
-	margin: 0 0 2rem;
+	margin: 0 0 3rem;
 `;
 
 const ListItemContainer = styled.div`margin: 0 0 1.5rem;`;
