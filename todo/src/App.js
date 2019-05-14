@@ -14,7 +14,6 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <h1>Todo App</h1>
       <TodoList />
       <TodoForm />
     </Container>
