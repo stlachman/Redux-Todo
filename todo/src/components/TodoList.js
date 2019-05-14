@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTodo, deleteTodo } from '../actions';
+import { toggleTodo, deleteTodo, clearCompletedTodos } from '../actions';
 
 class TodoList extends React.Component {
 
@@ -12,22 +12,30 @@ class TodoList extends React.Component {
     this.props.deleteTodo(index);
   }
 
+  clearCompleted = event => {
+    event.preventDefault();
+    this.props.clearCompletedTodos();
+  }
+
 	render() {
 		return (
-			<ul>
-				{this.props.todos.map((item, index) => (
-          <div key={index}>
-            <li
-              key={index}
-              style={{ textDecoration: item.completed ? 'line-through' : 'none' }}
-              onClick={() => this.toggleTodo(index)}
-            >
-              {item.value}
-            </li>
-            <button onClick={() => this.deleteTodo(index)}>Delete Todo</button>
-          </div>
-				))}
-			</ul>
+      <div>
+        <ul>
+          {this.props.todos.map((item, index) => (
+            <div key={index}>
+              <li
+                key={index}
+                style={{ textDecoration: item.completed ? 'line-through' : 'none' }}
+                onClick={() => this.toggleTodo(index)}
+              >
+                {item.value}
+              </li>
+              <button onClick={() => this.deleteTodo(index)}>Delete Todo</button>
+            </div>
+          ))}
+        </ul>
+        <button onClick={this.clearCompleted}>Clear Completed Todos</button>
+      </div>
 		);
 	}
 }
@@ -38,4 +46,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { toggleTodo, deleteTodo })(TodoList);
+export default connect(mapStateToProps, { toggleTodo, deleteTodo, clearCompletedTodos })(TodoList);
