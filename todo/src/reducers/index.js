@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from "../actions";
+import { ADD_TODO, TOGGLE_TODO } from '../actions';
 
 const initialState = {
 	todos: [
@@ -16,7 +16,7 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TODO:
-			return Object.assign({}, state, {
+			return {
 				todos: [
 					...state.todos,
 					{
@@ -24,18 +24,17 @@ export const reducer = (state = initialState, action) => {
 						completed: false
 					}
 				]
-      });
-    case TOGGLE_TODO: 
-      return Object.assign({}, state, {
+			};
+    case TOGGLE_TODO:
+      return {
         todos: state.todos.map((todo, index) => {
-          if (action.index === index) {
-            return Object.assign({}, todo, {
-              completed: !todo.completed
-            })
+          if (action.payload === index) {
+            return {...todo, completed: !todo.completed}
+          } else {
+            return todo;
           }
-          return todo
         })
-      })
+      }
 		default:
 			return state;
 	}

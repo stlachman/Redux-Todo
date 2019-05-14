@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleTodo } from '../actions';
-import Todo from './Todo';
 
-const TodoList = props => {
-  return (
-    <ul>
-      {props.todos.map((item, index) => <Todo todo={item} key={index} onClick={() => toggleTodo(index)} />)}
-    </ul>
-  )
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.todos.map((item, index) =>  <li key={index} onClick={() => this.props.toggleTodo(index)}>{item.value}</li>)}
+      </ul>
+    )
+  }
 }
+
 
 const mapStateToProps = (state) => {
   return {
