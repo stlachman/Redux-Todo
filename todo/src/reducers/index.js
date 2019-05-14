@@ -17,6 +17,7 @@ export const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TODO:
 			return {
+        ...state,
 				todos: [
 					...state.todos,
 					{
@@ -27,6 +28,7 @@ export const reducer = (state = initialState, action) => {
 			};
     case TOGGLE_TODO:
       return {
+        ...state,
         todos: state.todos.map((todo, index) => {
           if (action.payload === index) {
             return {...todo, completed: !todo.completed}
